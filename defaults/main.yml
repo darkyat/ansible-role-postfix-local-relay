@@ -1,0 +1,4 @@
+---
+postfix_local_relay_host: smtp
+postfix_local_relay_port: 25
+postfix_local_relay_forward_root_mail_to: ''

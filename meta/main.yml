@@ -1,0 +1,14 @@
+galaxy_info:
+  author: Julian Fahrer
+  description: Role to install postfix to relay local mails
+  license: MIT
+  min_ansible_version: 2.0
+  platforms:
+  - name: EL
+    versions:
+    - 6
+    - 7
+    galaxy_tags: 
+      - postfix
+      - smtp-relay
+dependencies: []

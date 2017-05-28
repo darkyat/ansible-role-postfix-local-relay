@@ -1,0 +1,25 @@
+---
+- name: Installing postfix
+  yum:
+    name: postifx
+    state: present
+
+- name: 'Setting up root alias'
+  lineinfile: 
+    dest: /etc/aliases 
+    regexp: '^root:\s+'
+    line: "root: {{ root_mail_forward }}"
+  when: postfix_local_relay_forward_root_mail_to != ''
+  notify: 'newaliases'
+
+- name: 'Setting up postfix template'
+  template:
+    src: main.cf.j2
+    dest: /etc/postfix/main.cf
+  notify: 'reload postfix'
+
+- name: 'Setting up service'
+  service:
+    name: postfix
+    enabled: yes
+    state: started
